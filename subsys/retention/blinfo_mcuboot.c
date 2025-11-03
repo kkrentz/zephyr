@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2023, Nordic Semiconductor ASA
+ * Copyright (c) 2025, Siemens AG
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -91,7 +92,7 @@ static int blinfo_handle_get(const char *name, char *val, int val_len_max)
 	const char *next;
 	uint16_t index;
 
-	/* Allowed keys are mode, signature_type, recovery, running_slot, bootloader_version
+	/* Allowed keys are mode, signature_type, recovery, running_slot, bootloader_version, dice,
 	 * and max_application_size which cannot contain any additional entries
 	 */
 	if (settings_name_steq(name, "mode", &next) && !next) {
@@ -106,6 +107,8 @@ static int blinfo_handle_get(const char *name, char *val, int val_len_max)
 		index = BLINFO_BOOTLOADER_VERSION;
 	} else if (settings_name_steq(name, "max_application_size", &next) && !next) {
 		index = BLINFO_MAX_APPLICATION_SIZE;
+	} else if (settings_name_steq(name, "dice", &next) && !next) {
+		index = BLINFO_DICE;
 	} else {
 		return -ENOENT;
 	}
