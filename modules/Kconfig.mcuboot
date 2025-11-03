@@ -3,6 +3,7 @@
 # Copyright (c) 2014-2015 Wind River Systems, Inc.
 # Copyright (c) 2016 Intel Corporation
 # Copyright (c) 2023 Nordic Semiconductor ASA
+# Copyright (c) 2025 Siemens AG
 # SPDX-License-Identifier: Apache-2.0
 
 config MCUBOOT
@@ -14,7 +15,6 @@ config BOOTLOADER_MCUBOOT
 	bool "MCUboot bootloader support"
 	select USE_DT_CODE_PARTITION if !MCUBOOT_BOOTLOADER_MODE_RAM_LOAD
 	imply INIT_ARCH_HW_AT_BOOT if ARCH_SUPPORTS_ARCH_HW_INIT
-	depends on !MCUBOOT
 	help
 	  This option signifies that the target uses MCUboot as a bootloader,
 	  or in other words that the image is to be chain-loaded by MCUboot.
